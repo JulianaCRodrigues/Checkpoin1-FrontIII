@@ -3,7 +3,7 @@ import Card from './Components/Card/Card'
 import Input from './Components/Input/Input'
 import CardsList from './Components/Card/CardsList'
 import { useState } from 'react'
-// import Swal from 'sweetalert2';
+
 
 
 function App() {
