@@ -1,7 +1,16 @@
 
-:root {
-  font-family: "Manrope", sans-serif;
-  margin: 0;
+@import url('https://fonts.googleapis.com/css2?family=Dancing+Script:wght@500;700&family=Quicksand:wght@400;700&display=swap');
+
+
+* {
   padding: 0;
-  background-color: rgb(84, 84, 84);
+  margin: 0;
+  box-sizing: border-box; 
+  font-family: 'Quicksand', sans-serif;
+}
+
+html {
+  border: 0.5px solid rgba(245, 239, 235, 0.40);
+  background: rgba(255, 237, 224, 0.56);
+  backdrop-filter: blur(80px);
 }

@@ -6,7 +6,7 @@ import style from "./Input.module.css"
 function Input({ title, type, value, fnOnChange, fnOnKeyUp }) {
   return (
     <>
-      <label className={style.label}>{title ?? "Digite o Nome do Filme"}</label>
+      <label className={style.label}>{title ?? "Digite o Nome do Livro"}</label>
       <input
         type={type ?? "text"}
         value={value}

@@ -45,9 +45,9 @@ function App() {
     const imageUrl = event.target.value
     setImgUrl(imageUrl)
 
-    const imageUrlPattern = /.(jpeg|jpg|gif|png|bmp|svg)\w{6,}$/i;
+    const imageUrlRegex = /.(jpeg|jpg|gif|png|bmp|svg)\w{6,}$/i;
 
-    if (imageUrlPattern.test(imageUrl) <= 5) {
+    if (imageUrlRegex.test(imageUrl) <= 5) {
       setIsValidImg(true);
     } else {
       setIsValidImg(false);
@@ -74,62 +74,79 @@ function App() {
 
   return (
     <>
-      <h1> Checkpoint 1 - Frontend III</h1>
-      <form>
-        <Input
-          title="Título do filme"
-          type="text"
-          value={title}
-          fnOnChange={handleChangeTitle}
-        />
-
-        {!isValidTitle && (
-          <p style={{ color: 'red' }}>Por favor, insira um título válido.</p>
-        )}
-        <Input
-          title="Img URL"
-          type="url"
-          value={imgUrl}
-          fnOnChange={handleChangeImgUrl}
-        />
-        {!isValidImg && (
-          <p style={{ color: 'red' }}>Por favor, insira um link de imagem válido.</p>
-        )}
-
-        <Input
-          title="Sinopse"
-          type="text"
-          value={description}
-          fnOnChange={handleChangeDescription}
-        />
-        {!isValidDescription && (
-          <p style={{ color: 'red' }}>Por favor, insira um título válido.</p>
-        )}
+      <div className='header'>
+        <h1 className='title'>My Library </h1>
+      </div>
 
 
 
-        <br />
-        <button onClick={handleButtonClick}
-          disabled={title === '' && imgUrl === '' && description === ''}
-        > Salvar</button>
-      </form>
+      <div className="container">
 
-      <CardsList>
-        {
-          cardsList.map(
-            infoCard => {
-              return (
-                <Card
-                  key={infoCard.title}
-                  title={infoCard.title.toUpperCase()}
-                  imgUrl={infoCard.imgUrl}
-                  description={infoCard.description}
-                />
+        <div className="formBook">
+          <h2>Cadastrar Livros</h2>
+          <form>
+            <Input
+              title="Título do Livro"
+              type="text"
+              value={title}
+              fnOnChange={handleChangeTitle}
+            />
+
+            {!isValidTitle && (
+              <p style={{ color: 'red' }}>Por favor, insira um título válido.</p>
+            )}
+            <Input
+              title="Img URL"
+              type="url"
+              value={imgUrl}
+              fnOnChange={handleChangeImgUrl}
+            />
+            {!isValidImg && (
+              <p style={{ color: 'red' }}>Por favor, insira um link de imagem válido.</p>
+            )}
+            <Input
+              title="Review"
+              type="text"
+              value={description}
+              fnOnChange={handleChangeDescription}
+              className='reviewBook'
+            />
+            {!isValidDescription && (
+              <p style={{ color: 'red' }}>Por favor, insira um título válido.</p>
+            )}
+            <button onClick={handleButtonClick}
+              disabled={title === '' && imgUrl === '' && description === ''}
+            > Salvar</button>
+          </form>
+        </div>
+
+        <div className="listCards">
+          <Card
+            title='Meu Livro'
+            imgUrl='https://i0.wp.com/animagos.com.br/wp-content/uploads/2019/08/book2HPCCJourneyCover.png?w=919&ssl=1'
+            description='Lorem ipsum dolor sit amet consectetur, adipisicing elit. Repellendus, nam pariatur! Eius ducimus earum eaque velit nobis, consectetur eum asperiores voluptatum aliquid! Voluptates placeat est veniam similique amet itaque quia.'
+          />
+
+          <CardsList>
+            {
+              cardsList.map(
+                infoCard => {
+                  return (
+                    <Card
+                      key={infoCard.title}
+                      title={infoCard.title}
+                      imgUrl={infoCard.imgUrl}
+                      description={infoCard.description}
+                    />
+                  )
+                }
               )
             }
-          )
-        }
-      </CardsList>
+          </CardsList>
+        </div>
+
+
+      </div>
 
     </>
   )
